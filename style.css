@@ -1,0 +1,236 @@
+:root {
+  --regular: 'founders-grotesk-regular';
+  --regularItalic: 'founders-grotesk-regular-italic';
+  --bold: 'founders-grotesk-bold';
+  --boldItalic: 'founders-grotesk-bold-italic';
+  --green: #10d18c;
+  --darkBlue: #262947;
+  --lightGray: #f9f9f9;
+  --midGray: #acaeb9;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+* {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: 'founders-grotesk-regular';
+  src:  url('fonts/FoundersGroteskWeb-Regular.eot');
+  src:  url('fonts/FoundersGroteskWeb-Regular.woff2') format('woff2'),
+        url('fonts/FoundersGroteskWeb-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'founders-grotesk-regular-italic';
+  src:  url('fonts/FoundersGroteskWeb-RegularItalic.eot');
+  src:  url('fonts/FoundersGroteskWeb-RegularItalic.woff2') format('woff2'),
+        url('fonts/FoundersGroteskWeb-RegularItalic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'founders-grotesk-bold';
+  src:  url('fonts/FoundersGroteskWeb-Bold.eot');
+  src:  url('fonts/FoundersGroteskWeb-Bold.woff2') format('woff2'),
+        url('fonts/FoundersGroteskWeb-Bold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'founders-grotesk-bold-italic';
+  src:  url('fonts/FoundersGroteskWeb-BoldItalic.eot');
+  src:  url('fonts/FoundersGroteskWeb-BoldItalic.woff2') format('woff2'),
+        url('fonts/FoundersGroteskWeb-BoldItalic.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--regular);
+  font-size: 1.6rem;
+  background: var(--darkBlue);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: auto 1fr auto;
+  height: 100vh;
+  grid-template-areas: 
+    'header header header'
+    'left-arrow main right-arrow'
+    'timer timer timer'
+}
+
+.fancy-heading {
+  position: relative;
+  display: inline-block;
+  font-size: 4rem;
+}
+
+h3 {
+  font-size: 3.5rem;
+  font-weight: normal;
+  font-family: var(--regular);
+}
+
+.fancy-heading::before, .fancy-heading::after {
+  content: '';
+  height: 1px;
+  width: 200px;
+  background: rgba(255,255,255,0.4);
+  position: absolute;
+}
+
+.fancy-heading::before {
+  left: -220px;
+  top: 25px;
+}
+
+.fancy-heading::after {
+  right: -220px;
+  top: 25px;
+}
+
+.left-arrow, .right-arrow {
+  align-self: end;
+  top: -15%;
+  position: relative;
+  color: var(--green);
+  opacity: 0.5;
+  transition: all 0.1s ease-in;
+}
+
+.right-arrow {
+  top: calc(-15% + 3px);
+}
+
+.left-arrow:hover, .right-arrow:hover {
+  opacity: 1;
+}
+
+.left-arrow img, .right-arrow img {
+  width: 70px;
+}
+
+.left-arrow {
+  grid-area: left-arrow;
+  transform: rotate(180deg);
+}
+
+.right-arrow {
+  grid-area: right-arrow;
+}
+
+.header {
+  padding: 2rem;
+  grid-area: header;
+  position: absolute;
+}
+
+.header__branding img {
+  width: 40px;
+}
+
+main {
+  text-align: center;
+  color: #fff;
+  max-width: 1400px;
+  margin: 0 auto;
+  grid-area: main;
+  padding-top: 5rem;
+}
+
+h1 {
+  font-size: 8.5rem;
+  line-height: 1;
+  margin: 0 0 4rem 0;
+  opacity: 0.3;
+}
+
+ol {
+  list-style-position: inside;
+  list-style-type: upper-alpha;
+  padding: 0;
+  font-size: 4rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+ol li {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px dotted rgba(255,255,255,0.3);
+}
+
+
+
+ol ul {
+  list-style-type: square;
+  padding: 0;
+}
+
+.timer {
+  justify-self: center;
+  padding-bottom: 5%;
+  grid-area: timer;
+}
+
+.display__time-left {
+  font-weight: 100;
+  font-size: 15rem;
+  margin: 0;
+  color:white;
+  text-shadow:4px 4px 0 rgba(0,0,0,0.05);
+  font-family: 'Inconsolata', monospace;
+}
+
+.timer__controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+.timer__button, .button {
+  background:none;
+  border:0;
+  cursor: pointer;
+  color: var(--green);
+  font-size: 3rem;
+  text-transform: uppercase;
+  background:rgba(0,0,0,0.1);
+  border:1px solid var(--green);
+  padding:2rem 4rem;
+  transition: all 0.1s ease-in;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.timer__button:hover,
+.timer__button:focus,
+.button:hover {
+  background: rgba(16,209,140,0.3);
+  color: #fff;
+  outline:0;
+}
+
+.display__end-time {
+  font-size: 4rem;
+  color: white;
+}
+
+[hidden] {
+  display: none!important;
+}
